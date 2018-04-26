@@ -1,4 +1,4 @@
-Feature: Line, Wave, Hub, Spoke can be added by Sales User
+Feature: Hub can be added by Sales User
 
   Scenario: CPQ can be used to add the products
 
@@ -20,6 +20,8 @@ Feature: Line, Wave, Hub, Spoke can be added by Sales User
     Then he clicks save to quote
     Then he should be in CPQ
 
-    | product | address | bandwidth | resiliency  |
-    | hub | 3, Julius-Tandler-Platz, Wien, Austria, Wien  | 1G  |
-    | hub | 3, Julius-Tandler-Platz, Wien, Austria, Wien  | 1G  |
+    Examples
+    | product  | address                                      | bandwidth | resiliency |
+    | hub      | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1G        | Protected  |
+    | hub      | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1G        | Gold       |
+    | hub      | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1G        | Platinum   |
