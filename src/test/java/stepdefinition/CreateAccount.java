@@ -25,7 +25,7 @@ public class CreateAccount {
     public void enter_account_details() throws Throwable{
         Thread.sleep(20000);
         mainPage = new MainPage(driver);
-        mainPage.accountCreate();
+        //mainPage.accountCreate();
     }
 
 }

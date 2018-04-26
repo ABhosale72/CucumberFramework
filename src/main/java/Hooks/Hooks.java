@@ -15,6 +15,7 @@ public class Hooks {
     @Before
     public void setUpDriver() throws Exception{
         //ChromeDriver driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "D:\\ColtCPQ\\chromedriver\\chromedriver.exe");
         ObjectRepo.driver = new ChromeDriver();
         ObjectRepo.driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         ObjectRepo.driver.manage().timeouts().pageLoadTimeout(240, TimeUnit.SECONDS);

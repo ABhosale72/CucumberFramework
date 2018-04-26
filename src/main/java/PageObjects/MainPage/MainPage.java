@@ -6,9 +6,10 @@ import PageObjects.HomePage.HomePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class MainPage extends BasePage{
+public class MainPage extends HomePage{
 
     private WebDriver driver;
     private WaitHelper wait;
@@ -55,81 +56,80 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//span[contains(text(),'Save')]")
     public WebElement save;
 
-    @FindBy(xpath = "//span[contains(@id,'panel0')]")
+    @FindBy(xpath = "//span[contains(@id,'CollapsedImg')]")
     public WebElement customer;
 
-    //@FindBy(xpath = "//a[contains(text(),'Accounts')]")
-    //public WebElement accountsHome;
+    @FindBy(xpath = "//a[contains(text(),'Accounts')]")
+    public WebElement accounts;
 
-    public void accountCreate(){
-        wait = new WaitHelper(this.driver);
-        wait.waitForElement(plusHome);
-        plusHome.click();
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        accountsHome.click();
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        wait.waitForElement(name);
-        name.sendKeys("AdityaTestAutomation");
-        wait.waitForElement(countryDropTextField);
-        countryDropTextField.click();
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        countryDropTextField.sendKeys(Keys.DOWN);
-        countryDropTextField.sendKeys(Keys.RETURN);
-        wait.waitForElement(salesChannelDrop);
-        salesChannelDrop.sendKeys("Direct");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        wait.waitForElement(businessSectorDrop);
-        businessSectorDrop.sendKeys("Information");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        street.sendKeys("Julius-Tandler-Platz");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        city.sendKeys("Wien");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        zipcode.sendKeys("1010");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        country.sendKeys("AT - Austria");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        save.click();
+    @FindBy(xpath = "//span[contains(@id,'searchButton-img')]")
+    public WebElement firstSearchButton;
+
+    @FindBy(xpath = "//input[contains(@id,'searchField')]")
+    public WebElement searchFieldforAccount;
+
+    @FindBy(xpath = "//a[contains(text(),'AutomationTesting')]")
+    public WebElement automationTesting;
+
+    @FindBy(xpath = "(//div[contains(@id,'tabstrip-tabs')]/div)[4]/span")
+    public WebElement automationOpportunities;
+
+    @FindBy(xpath = "//span[contains(@id,'searchButton-img')]")
+    public WebElement automationPageSearchButton;
+
+    @FindBy(xpath = "//input[contains(@id,'searchField')]")
+    public WebElement automationSearchFieldforOppo;
+
+    @FindBy(xpath = "//a[contains(text(),'Test_Nam')]")
+    public WebElement TestNam;
+
+    @FindBy(xpath = "(//div[contains(@id,'tabstrip')]/div)[2]/div/div[3]/span")
+    public WebElement quotes;
+
+    @FindBy(xpath = "//span[text()='Add']")
+    public WebElement addButton;
+
+
+    /*  *   *   *   *  *   *   *    *  *   *   *    *   *   *   *  *   *   *    *  *   *   *
+    *   *    *   *   *  This method is used for navigating from C4C to CPQ   *  *   *   *    *
+    *   *   *   *   *  *   *   *    *  *   *   *    *   *   *   *  *   *   *    *  *   *   *
+    */
+
+    public void navigateToCPQ(){
+        tryCatchWait();
+        customer.click();
+        accounts.click();
+        tryCatchWait();
+        firstSearchButton.click();
+        tryCatchWait();
+        searchFieldforAccount.sendKeys("AutomationTesting");
+        tryCatchWait();
+        searchFieldforAccount.sendKeys(Keys.ENTER);
+        tryCatchWait();
+        automationTesting.click();
+        tryCatchWait();
+        automationOpportunities.click();
+        tryCatchWait();
+        automationPageSearchButton.click();
+        tryCatchWait();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(automationSearchFieldforOppo).click().sendKeys("Test_Nam").sendKeys(Keys.ENTER).build().perform();
+        tryCatchWait();
+        TestNam.click();
+        tryCatchWait();
+        quotes.click();
+        tryCatchWait();
+        addButton.click();
+        tryCatchWait();
+
+    }
+
+    private void tryCatchWait(){
         try {
             Thread.sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
 }

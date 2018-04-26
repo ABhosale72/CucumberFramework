@@ -7,8 +7,10 @@
     </listeners>
     <test name="Test - 1">
         <classes>
-            <class name="testrunner.LoginRunner" />
-            <class name="testrunner.CreateAccountRunner" />
+            <class name="testrunner.AccountDetailsRunner" />
+            <class name="testrunner.CommercePageRunner" />
+            <class name="testrunner.LegalContactRunner" />
+            <class name="testrunner.LoginToCPQRunner" />
         </classes>
     </test>
 </suite>

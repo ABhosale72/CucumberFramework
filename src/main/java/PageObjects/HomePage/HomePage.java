@@ -45,7 +45,7 @@ public class HomePage extends BasePage {
 
 
     public void loginToHomePage() {
-        enterUsername("Abhishek.bahadur@colt.net");
+        enterUsername("Ashok.Bhosale@colt.net");
         enterPwd("Colt1234");
         loginToMainPage();
         wait = new WaitHelper(this.driver);
