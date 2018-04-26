@@ -11,6 +11,7 @@ public class ProductPage extends CommercePage {
     private WebDriver driver;
     private WebElement elementName;
     private String printedMessage;
+    private String elementText;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -44,6 +45,33 @@ public class ProductPage extends CommercePage {
     @FindBy(xpath = "(//p)[2]")
     public WebElement warningMsgBuildingNumber;
 
+    @FindBy(xpath = "(//span[contains(text(),'Site Details')])[1]")
+    public WebElement siteDetails;
+
+    @FindBy(xpath = "(//span[contains(text(),'Features')])[1]")
+    public WebElement features;
+
+    @FindBy(xpath = "(//span[contains(text(),'Site Address')])[1]")
+    public WebElement siteAddress;
+
+    @FindBy(xpath = "//select[contains(@id,'serviceBandwidth')]")
+    public WebElement serviceDropDown;
+
+    @FindBy(xpath = "((//*[contains(@class, 'general_fields')])[3]/td)[1]")
+    public WebElement basePriceSiteDetails;
+
+    @FindBy(xpath = "((//*[contains(@class, 'general_fields')])[5]/td)[1]")
+    public WebElement grossPrice;
+
+    @FindBy(xpath = "//input[contains(@id,'outsideBusinessHoursInstallationAEnd_true')]")
+    public WebElement obh;
+
+    @FindBy(xpath = "(//*[contains(@class, 'general_fields')])[4]/td")
+    public WebElement obhPriceTable;
+
+    @FindBy(xpath = "")
+    public WebElement saveButton;
+
     public void clearFieldEntry(WebElement element){
         this.elementName = element;
         element.clear();
@@ -62,4 +90,5 @@ public class ProductPage extends CommercePage {
                 break;
         }
     }
+
 }

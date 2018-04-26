@@ -13,7 +13,6 @@ Feature: Hub can be added by Sales User
     And he chooses "<bandwidth>"
     Then he chooses "<resiliency>"
     Then he should see base price table
-    And two values should be populated against base price
     Then he click on features
     And chooses OBH
     Then he should see base price and obh in the table below
@@ -21,7 +20,7 @@ Feature: Hub can be added by Sales User
     Then he should be in CPQ
 
     Examples
-    | product  | address                                      | bandwidth | resiliency |
-    | hub      | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1G        | Protected  |
-    | hub      | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1G        | Gold       |
-    | hub      | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1G        | Platinum   |
+    | product | address                                      | bandwidth | resiliency |
+    | hub     | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1 Gbps    | Protected  |
+    | hub     | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1 Gbps    | Gold       |
+    | hub     | 3, Julius-Tandler-Platz, Wien, Austria, Wien | 1 Gbps    | Platinum   |
