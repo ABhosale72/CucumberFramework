@@ -10,9 +10,8 @@ Feature: Site Address page
     Then hub site details drop down should populate entry fields with proper message
     Then Google should show suggestions in drop down for entered address
     Then user should be able to select the address
-    And address drop down fields should get populated
+    And Site Details, Features tab should not be present before check connectivity is clicked
     And check connectivity button should get generated
-    And Site Details, Features tab should not be present
     When check connectivity button is clicked it should generate three tabs
     When new address is selected it should show message to recheck connectivity
 

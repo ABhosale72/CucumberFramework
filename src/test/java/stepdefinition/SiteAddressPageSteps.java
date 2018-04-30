@@ -10,6 +10,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.lang.StringUtils;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 public class SiteAddressPageSteps {
@@ -96,37 +97,45 @@ public class SiteAddressPageSteps {
 
     @Then("^user should be able to select the address$")
     public void userShouldBeAbleToSelectTheAddress() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Thread.sleep(10000);
+        productPage.addressEntry.clear();
+        productPage.addressEntry.sendKeys("3, Julius-Tandler-Platz, Wien, Austria, Wien");
+        Thread.sleep(10000);
+        productPage.addressEntry.sendKeys(Keys.DOWN);
+        productPage.addressEntry.sendKeys(Keys.ENTER);
+        Thread.sleep(10000);
     }
 
-    @And("^address drop down fields should get populated$")
-    public void addressDropDownFieldsShouldGetPopulated() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @And("^Site Details, Features tab should not be present before check connectivity is clicked$")
+    public void siteDetailsFeaturesTabShouldNotBePresent() throws Throwable {
+        Assert.assertFalse(productPage.siteDetails.isDisplayed());
+        Assert.assertFalse(productPage.features.isDisplayed());
     }
 
     @And("^check connectivity button should get generated$")
     public void checkConnectivityButtonShouldGetGenerated() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^Site Details, Features tab should not be present$")
-    public void siteDetailsFeaturesTabShouldNotBePresent() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(productPage.checkConnectivity.isDisplayed());
     }
 
     @When("^check connectivity button is clicked it should generate three tabs$")
     public void checkConnectivityButtonIsClickedItShouldGenerateThreeTabs() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Thread.sleep(5000);
+        productPage.checkConnectivity.click();
+        Thread.sleep(10000);
+        Assert.assertTrue(productPage.siteDetails.isDisplayed());
+        Assert.assertTrue(productPage.features.isDisplayed());
     }
 
     @When("^new address is selected it should show message to recheck connectivity$")
     public void newAddressIsSelectedItShouldShowMessageToRecheckConnectivity() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        productPage.addressEntry.clear();
+        productPage.addressEntry.sendKeys("Schwarzenbergplatz 18, Vienna, Austria");
+        Thread.sleep(10000);
+        productPage.addressEntry.sendKeys(Keys.DOWN);
+        productPage.addressEntry.sendKeys(Keys.ENTER);
+        Thread.sleep(10000);
+        String warningMsg = productPage.getWarningMessage(productPage.constraintMsg);
+        String actualWarning = "Message: Some of the fields have been changed. Click on Check Connectivity to continue";
+        Assert.assertEquals(warningMsg, actualWarning);
     }
 }
