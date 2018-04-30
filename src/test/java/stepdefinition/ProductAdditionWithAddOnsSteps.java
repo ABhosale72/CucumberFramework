@@ -72,8 +72,8 @@ public class ProductAdditionWithAddOnsSteps {
         Thread.sleep(10000);
     }
 
-    @Then("^he should see 3 tabs of site address, site details and features$")
-    public void heShouldSeeTabsOfSiteAddressSiteDetailsAndFeatures(int arg0) throws Throwable {
+    @Then("^he should see three tabs of site address, site details and features$")
+    public void heShouldSeeTabsOfSiteAddressSiteDetailsAndFeatures() throws Throwable {
         Assert.assertTrue(productPage.siteDetails.isDisplayed());
         Assert.assertTrue(productPage.features.isDisplayed());
         Assert.assertTrue(productPage.siteAddress.isDisplayed());
@@ -86,16 +86,36 @@ public class ProductAdditionWithAddOnsSteps {
         Thread.sleep(10000);
     }
 
-    @And("^he chooses \"([^\"]*)\"$")
+    //Selecting Service Bandwidth
+    @And("^he chooses \"([^\"]*)\" bandwidth$")
     public void heChooses(String arg0) throws Throwable {
         Select dropdown = new Select(productPage.serviceDropDown);
         dropdown.selectByValue(arg0);
         Thread.sleep(10000);
     }
 
+    @Then("^he chooses \"([^\"]*)\" resiliency$")
+    public void heChoosesResiliency(String arg0) throws Throwable {
+        Select dropdownRes = new Select(productPage.resiliencyDrop);
+        dropdownRes.selectByValue(arg0);
+        Thread.sleep(10000);
+    }
+
+    @Then("^building type should be \"([^\"]*)\"$")
+    public void buildingTypeShouldBe(String arg0) throws Throwable {
+        Assert.assertEquals(productPage.getWarningMessage(productPage.buildingType),arg0);
+        Thread.sleep(10000);
+    }
+
+    @Then("^end address should be \"([^\"]*)\"$")
+    public void endAddressShouldBe(String arg0) throws Throwable {
+        Assert.assertEquals(productPage.getWarningMessage(productPage.endAddress),arg0);
+        Thread.sleep(10000);
+    }
+
     @Then("^he should see base price table$")
     public void heShouldSeeBasePriceTable() throws Throwable {
-        Assert.assertTrue(productPage.basePriceSiteDetails.isDisplayed());
+        Assert.assertEquals(productPage.getWarningMessage(productPage.basePriceSiteDetails), "Base Price");
         Thread.sleep(10000);
     }
 
@@ -111,13 +131,6 @@ public class ProductAdditionWithAddOnsSteps {
         Thread.sleep(10000);
     }
 
-    @Then("^he should see base price and obh in the table below$")
-    public void heShouldSeeBasePriceAndObhInTheTableBelow() throws Throwable {
-        Assert.assertEquals(productPage.getWarningMessage(productPage.grossPrice),"Gross Price");
-        Assert.assertEquals(productPage.getWarningMessage(productPage.obhPriceTable), "Outside Business Hours Installation");
-        Thread.sleep(10000);
-    }
-
     @Then("^he clicks save to quote$")
     public void heClicksSaveToQuote() throws Throwable {
         productPage.saveButton.click();
@@ -128,4 +141,5 @@ public class ProductAdditionWithAddOnsSteps {
     public void heShouldBeInCPQ() throws Throwable {
         Assert.assertEquals(commercePage.quoteDetails.getText(), "QUOTE DETAILS");
     }
+
 }

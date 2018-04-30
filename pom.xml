@@ -66,9 +66,16 @@
                         </property>
                     </properties>
                     <suiteXmlFiles>
-                        <suiteXmlFile>/Users/himrekha/IdeaProjects/practice/src/test/java/testng/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>D:\ColtCPQ\CucumberFramework\CucumberTestNGReporting\src\test\java\testng\testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.9.1</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -97,6 +104,11 @@
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
             <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-testng-adaptor</artifactId>
+            <version>1.5.4</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -153,11 +165,6 @@
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>1.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.9.0</version>
         </dependency>
     </dependencies>
 </project>
